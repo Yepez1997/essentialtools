@@ -4,29 +4,24 @@
 import urllib
 import sys
 import pprint
-from urllib.request import urlopen
 import json
-import tkinter as tk
 import argparse
 import base64
 import requests
-from PIL import Image
-from io import StringIO
-from io import BytesIO
 
 
-
-# This client code can run on Python 2.x or 3.x.  Your imports can be
-# simpler if you only need one of those.
 
 # For Python 3.0 and later
 from urllib.error import HTTPError
+#from urllib.error import HTTPError
+#from urllib.request import urlopen
 from urllib.parse import quote
 from urllib.parse import urlencode
 
 
 """ CHANGE BEFORE COMMIT $$$$$$$$$$$$$$ """
-API_KEY = "UGVSGgOAz7bSDrOd10cUgszg0vyJXsTwgW2JdnmyzWLwKBVB2Y_kfIr0irX2APmxUqsaOxLbictlUYl7Wp8XgZNZ0LMP1rUfLEBhlcKp4dXBrXVjDD-EgLeeUHrW3Yx"
+# A
+API_KEY = "AUGVSGgOAz7bSDrOd10cUgszg0vyJXsTwgW2JdnmyzWLwKBVB2Y_kfIr0irX2APmxUqsaOxLbictlUYl7Wp8XgZNZ0LMP1rUfLEBhlcKp4dXBrXVjDD-EgLeeUHrW3Yx"
 
 
 
@@ -52,6 +47,10 @@ def request(host, path, api_key, url_params=None):
     Raises:
         HTTPError: An error occurs from the HTTP request.
     """
+    # url params and headers are always default 
+    # api host -> host 
+    # path -> the path we search for
+    
     url_params = url_params or {}
     # host + path 
     url = '{0}{1}'.format(host, quote(path.encode('utf8')))
@@ -94,21 +93,10 @@ def get_business(api_key, business_id):
 
 # TO:DO
 # create list of restraunts w/ start and end time 
-def times_dict(start, end):
-    nested = {{}}
 
 def jsonsearching(obj):
-    #data = json.loads(obj)
-    dump = json.dumps(obj)
-    load = json.loads(dump)
     pprint.pprint(obj, indent=2)
-
-# read url bytes not working yet 
-def showpic(pic):
-    image_byt = urlopen(pic).read()
-    image_b64 = base64.encodestring(image_byt)  
-    photo = tk.PhotoImage(data=image_b64)
-    return 0 
+ 
 
 def query_api(term, location):
     """Queries the API by the input values from the user.
@@ -138,10 +126,10 @@ def query_api(term, location):
         print(u'Result for business "{0}" found:'.format(business_id))
         # only going to get hours ? 
         # KNOW WHEN TO INDEX LOOK AT OUTER PAREN 
-        hours = response['hours']
+        #hours = response['hours']
         days_open = response['hours'][0]['open']
-        start_times = response['hours'][0]['open'][0]['start']
-        end_times = response['hours'][0]['open'][0]['end']
+        #start_times = response['hours'][0]['open'][0]['start']
+        #end_times = response['hours'][0]['open'][0]['end']
         #photos = response['photos'][0] # first photo/ needs fix
         jsonsearching(days_open)
 
