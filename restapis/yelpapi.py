@@ -114,6 +114,9 @@ def query_api(term, location):
         print(u'No businesses for {0} in {1} found.'.format(term, location))
         return
 
+
+
+    # working with stashes 
     # takes the first i entries to search for 
     for i in range(2):
         business_id = businesses[i]['id']
