@@ -5,13 +5,6 @@ import json
 time_line = 'https://api.github.com/events'
 http_bin_get = 'https://httpbin.org/get'
 
-user = "Yepez1997"
-r = requests.get('https://api.github.com/user',auth=(user,password))
-#print(r.headers['content-type'])
-#print(r.encoding)
-# retrive events with response 
-r2 = requests.get(time_line)
-
 # passing key values 
 kv = {'key1':'value1','key2':'value2', 'key3':'value3', 'key4':'value4'}
 rkv = requests.get(http_bin_get, params=kv)
