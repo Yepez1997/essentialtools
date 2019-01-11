@@ -6,7 +6,6 @@ time_line = 'https://api.github.com/events'
 http_bin_get = 'https://httpbin.org/get'
 
 user = "Yepez1997"
-password = "Jrclass20160!"
 r = requests.get('https://api.github.com/user',auth=(user,password))
 #print(r.headers['content-type'])
 #print(r.encoding)
