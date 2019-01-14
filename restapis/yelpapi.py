@@ -1,6 +1,6 @@
-# NEXT STEP IS GETTING SPECIFIC JSON VALUES 
+# NEXT STEP IS GETTING SPECIFIC JSON VALUES
 # INDEXING RIGHT THINGS IN DICTIONARY
-# KNOW WHEN TO INDEX LOOK AT OUTER PAREN lOOOOOOkKKKKKKKKK ALERT ALERT 
+# KNOW WHEN TO INDEX LOOK AT OUTER PAREN lOOOOOOkKKKKKKKKK ALERT ALERT
 import urllib
 import sys
 import pprint
@@ -21,7 +21,7 @@ from urllib.parse import urlencode
 
 """ CHANGE BEFORE COMMIT $$$$$$$$$$$$$$ """
 # A
-API_KEY = "AUGVSGgOAz7bSDrOd10cUgszg0vyJXsTwgW2JdnmyzWLwKBVB2Y_kfIr0irX2APmxUqsaOxLbictlUYl7Wp8XgZNZ0LMP1rUfLEBhlcKp4dXBrXVjDD-EgLeeUHrW3Yx"
+API_KEY = "AUGVrOd10X2APmxUqsaOxLbictlUYl7Wp8XgZNZ0LMP1rUfLEBhlcKp4dXBrXVjDD-EgLeeUHrW3Yx"
 
 
 
@@ -47,12 +47,12 @@ def request(host, path, api_key, url_params=None):
     Raises:
         HTTPError: An error occurs from the HTTP request.
     """
-    # url params and headers are always default 
-    # api host -> host 
+    # url params and headers are always default
+    # api host -> host
     # path -> the path we search for
-    
+
     url_params = url_params or {}
-    # host + path 
+    # host + path
     url = '{0}{1}'.format(host, quote(path.encode('utf8')))
     headers = {
         'Authorization': 'Bearer %s' % api_key,
@@ -92,11 +92,11 @@ def get_business(api_key, business_id):
 
 
 # TO:DO
-# create list of restraunts w/ start and end time 
+# create list of restraunts w/ start and end time
 
 def jsonsearching(obj):
     pprint.pprint(obj, indent=2)
- 
+
 
 def query_api(term, location):
     """Queries the API by the input values from the user.
@@ -107,7 +107,7 @@ def query_api(term, location):
     response = search(API_KEY, term, location)
 
     #json here and index
-    # 'businesses' -> object of businesses 
+    # 'businesses' -> object of businesses
     businesses = response.get('businesses')
 
     if not businesses:
@@ -116,8 +116,8 @@ def query_api(term, location):
 
 
 
-    # working with stashes 
-    # takes the first i entries to search for 
+    # working with stashes
+    # takes the first i entries to search for
     for i in range(2):
         business_id = businesses[i]['id']
 
@@ -127,8 +127,8 @@ def query_api(term, location):
         response = get_business(API_KEY, business_id)
 
         print(u'Result for business "{0}" found:'.format(business_id))
-        # only going to get hours ? 
-        # KNOW WHEN TO INDEX LOOK AT OUTER PAREN 
+        # only going to get hours ?
+        # KNOW WHEN TO INDEX LOOK AT OUTER PAREN
         #hours = response['hours']
         days_open = response['hours'][0]['open']
         #start_times = response['hours'][0]['open'][0]['start']
@@ -137,7 +137,7 @@ def query_api(term, location):
         jsonsearching(days_open)
 
         #pprint.pprint(hours, indent=2)
-        
+
 
 
 def main():
